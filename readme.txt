@@ -1,1 +1,1 @@
-my git is good
+一些通用的算法
