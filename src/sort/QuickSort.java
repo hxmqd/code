@@ -2,6 +2,9 @@ package sort;
 
 import java.util.Arrays;
 
+/**
+ * 平均时间复杂度 O(nlogn) 最坏 O(N2) 最好 O(nlogn)	不稳定
+ */
 public class QuickSort {
 	
 	public static void sort(int[] a){
