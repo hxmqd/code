@@ -22,6 +22,7 @@ public class Prim {
 
     public static void prim(int[][] a) {
         int n = a.length;
+        int sum = 0;
         int u[] = new int[n];   // 结点是否访问过
         int w[] = new int[n];
         int b[] = new int[n];   // 初始化每个结点前驱结点为0结点
@@ -46,7 +47,8 @@ public class Prim {
                 }
             }
             u[k] = 1;
-            System.out.print("(" + b[k] + "," + k + ")");
+            sum += min;
+            System.out.println(b[k] + " ---> " + k + " " + min);
             for (int j = 1; j < n; j++) {
                 if (u[j] == 0 && a[k][j] < w[j]) {
                     w[j] = a[k][j];
@@ -54,5 +56,6 @@ public class Prim {
                 }
             }
         }
+        System.out.print(" sum:"+sum);
     }
 }
