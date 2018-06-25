@@ -2,9 +2,11 @@ package shortestpath;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * 广度优先搜索
+ */
 public class Dijkstra {
 
     static int MAX = Integer.MAX_VALUE;

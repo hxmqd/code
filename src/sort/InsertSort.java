@@ -3,6 +3,9 @@ package sort;
 import java.util.Arrays;
 import java.util.Date;
 
+/**
+ * 平均 O(n2) 最好 O(n) 最差(n2)
+ */
 public class InsertSort {
 	
 	public static void sort(int[] a){
@@ -19,7 +22,7 @@ public class InsertSort {
 				}
 			}
 		}
-		System.out.println((new Date().getTime() - start)/1000+"��");
+		System.out.println((new Date().getTime() - start)/1000+"��");
 		//System.out.println(Arrays.toString(a));
 		
 	}
