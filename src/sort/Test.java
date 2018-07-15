@@ -7,11 +7,10 @@ public class Test {
 		int[] array = new int[10];
 		BST bst = new BST();
 		for (int i =0;i < 10;i++) {
-			// array[i] = (int)(Math.random()*10);
-			bst.put((int)(Math.random()*10), (int)(Math.random()*10));
+			array[i] = (int)(Math.random()*10);
+			// bst.put((int)(Math.random()*10), (int)(Math.random()*10));
 		}
-		//QuickSort.sort(array);
-		System.out.println(bst.get(3));
+		QuickSort.sort(array);
 	}
 
 }
