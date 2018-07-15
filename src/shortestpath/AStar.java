@@ -165,3 +165,4 @@ class Point implements Comparable<Point> {
         return "["+this.x+","+this.y+"]";
     }
 }
+
