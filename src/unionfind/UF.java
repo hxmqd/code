@@ -11,24 +11,24 @@ public class UF {
 
     private int[] sz;
 
-    public UF(int n){
+    public UF(int n) {
         parent = new int[n];
-        for(int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) {
             parent[i] = i;
         }
         Arrays.fill(sz, 1);
     }
 
-    public int find(int x){
-        while(x != parent[x]) x = parent[x];
+    public int find(int x) {
+        while (x != parent[x]) x = parent[x];
         return x;
     }
 
-    public void union(int p, int q){
+    public void union(int p, int q) {
         int i = find(p);
         int j = find(q);
-        if(i == j) return;
-        if(sz[i] < sz[j]){
+        if (i == j) return;
+        if (sz[i] < sz[j]) {
             parent[i] = j;
             sz[j] += sz[i];
         } else {
@@ -36,7 +36,6 @@ public class UF {
             sz[i] += sz[j];
         }
     }
-
 
 
 }

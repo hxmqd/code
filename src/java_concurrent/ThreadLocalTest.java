@@ -12,7 +12,7 @@ public class ThreadLocalTest {
     public static final ThreadLocal<Object> threadLocal = new ThreadLocal<Object>() {
         protected Object initialValue() {
             //调用get方法时，若当前线程共享变量没有设置，调用initialValue获取默认值
-            System.out.println(Thread.currentThread().getName()+" invoke initialValue");
+            System.out.println(Thread.currentThread().getName() + " invoke initialValue");
             return null;
         }
 
@@ -31,32 +31,30 @@ public class ThreadLocalTest {
         thread2.start();
 
 
-
     }
 }
 
 
+class ReentrantLockTask implements Runnable {
 
-    class ReentrantLockTask implements Runnable {
 
-
-        @Override
-        public void run() {
-         for (int i = 0; i < 5; i++) {
-                if (null == ThreadLocalTest.threadLocal.get()) {
-                    ThreadLocalTest.threadLocal.set(0);
-                } else {
-                    int num = (Integer) ThreadLocalTest.threadLocal.get();
-                    ThreadLocalTest.threadLocal.set(num + 1);
-                    System.out.println(Thread.currentThread().getName() + ":" + ThreadLocalTest.threadLocal.get());
-                }
-
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-
+    @Override
+    public void run() {
+        for (int i = 0; i < 5; i++) {
+            if (null == ThreadLocalTest.threadLocal.get()) {
+                ThreadLocalTest.threadLocal.set(0);
+            } else {
+                int num = (Integer) ThreadLocalTest.threadLocal.get();
+                ThreadLocalTest.threadLocal.set(num + 1);
+                System.out.println(Thread.currentThread().getName() + ":" + ThreadLocalTest.threadLocal.get());
             }
+
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
         }
     }
+}

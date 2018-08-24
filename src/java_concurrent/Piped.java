@@ -15,7 +15,7 @@ public class Piped {
             Thread printThread = new Thread(new Print(in), "PrintThread");
             printThread.start();
             int receive = 0;
-            while((receive = System.in.read()) != -1){
+            while ((receive = System.in.read()) != -1) {
                 out.write(receive);
             }
             out.close();
@@ -25,22 +25,22 @@ public class Piped {
     }
 }
 
-class Print implements Runnable{
+class Print implements Runnable {
 
     private PipedReader in;
 
-    public Print(PipedReader in){
+    public Print(PipedReader in) {
         this.in = in;
     }
 
     @Override
     public void run() {
         int receive = 0;
-        try{
-            while((receive = in.read()) != -1){
-                System.out.print((char)receive);
+        try {
+            while ((receive = in.read()) != -1) {
+                System.out.print((char) receive);
             }
-        } catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

@@ -34,29 +34,29 @@ public class QuickSort {
         helper1(a, i + 1, right);
     }
 
-    static void helper2(int a[], int left, int right){
+    static void helper2(int a[], int left, int right) {
         LinkedHashMap<Integer, Integer> map = new LinkedHashMap<>();
         map.put(left, right);
-        for (Iterator<Map.Entry<Integer, Integer>> iterator = map.entrySet().iterator() ; iterator.hasNext(); ){
+        for (Iterator<Map.Entry<Integer, Integer>> iterator = map.entrySet().iterator(); iterator.hasNext(); ) {
 
             left = iterator.next().getKey();
             right = map.get(left);
 
             iterator.remove();
 
-            if(left >= right) continue;
+            if (left >= right) continue;
 
             int i = left, j = right, temp = a[left];
-            while(i < j){
-                while(a[j] >= temp && i < j)  j--;
+            while (i < j) {
+                while (a[j] >= temp && i < j) j--;
                 a[i] = a[j];
-                while(a[i] <= temp && i < j) i++;
+                while (a[i] <= temp && i < j) i++;
                 a[j] = a[i];
             }
             a[i] = temp;
-            map.put(left, i -1);
-            map.put(i+1, right);
-            System.out.print("hello"+map.size());
+            map.put(left, i - 1);
+            map.put(i + 1, right);
+            System.out.print("hello" + map.size());
 
         }
 

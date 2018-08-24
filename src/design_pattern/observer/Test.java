@@ -8,7 +8,7 @@ import java.util.List;
 /*
     被观察者接口
  */
-interface Observed  {
+interface Observed {
 
     public void registerObserver(Observer o);
 
@@ -20,17 +20,17 @@ interface Observed  {
 /*
     观察者接口
  */
-interface Observer{
+interface Observer {
     public void update(String message);
 }
 
-class WechatServer implements Observed{
+class WechatServer implements Observed {
 
     private List<Observer> list;
 
     private String message;
 
-    public WechatServer(){
+    public WechatServer() {
         list = new ArrayList<Observer>();
     }
 
@@ -47,26 +47,26 @@ class WechatServer implements Observed{
     @Override
     public void notifyObserver() {
 
-        for(Observer oserver : list){
+        for (Observer oserver : list) {
             oserver.update(message);
         }
 
     }
 
-    public void setInfomation(String s){
+    public void setInfomation(String s) {
         this.message = s;
-        System.out.println("微信服务更新消息："+s);
+        System.out.println("微信服务更新消息：" + s);
         notifyObserver();
     }
 }
 
-class User implements Observer{
+class User implements Observer {
 
     private String name;
 
     private String message;
 
-    public User(String name){
+    public User(String name) {
         this.name = name;
     }
 
@@ -76,14 +76,14 @@ class User implements Observer{
         read();
     }
 
-    public void read(){
+    public void read() {
         System.out.println(name + "收到推送消息：" + message);
     }
 
 }
 
 public class Test {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         WechatServer server = new WechatServer();
         Observer userZhang = new User("zhangsan");
         Observer userLi = new User("LiSi");

@@ -3,6 +3,7 @@ package shortestpath;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Stack;
+
 /*
 
     最短路径A*算法
@@ -11,7 +12,7 @@ public class AStar {
 
     // 上下左右
     public final static int[] dx = {0, -1, 0, 1};
-    public final static int[] dy = { -1, 0, 1, 0};
+    public final static int[] dy = {-1, 0, 1, 0};
 
     // 最外圈都是1表示不可通过
     final static public int[][] map = {
@@ -30,24 +31,23 @@ public class AStar {
 
     public static void main(String[] args) {
 
-        Point start = new Point(1,1);
+        Point start = new Point(1, 1);
         Point end = new Point(4, 12);
 
         Stack<Point> stack = path(start, end);
-        if(stack == null){
+        if (stack == null) {
             System.out.println("不可达");
 
-        }else{
-            while(!stack.isEmpty()){
+        } else {
+            while (!stack.isEmpty()) {
                 System.out.println(stack.pop());
             }
         }
 
 
-
     }
 
-    public static Stack<Point> path(Point start, Point end){
+    public static Stack<Point> path(Point start, Point end) {
 
         //openTab表示可以移动到的格子集合，closeTab表示已经移动过的格子集合。
         ArrayList<Point> openTab = new ArrayList<>();
@@ -58,17 +58,17 @@ public class AStar {
         Point currentPoint = new Point(start.x, start.y);
         boolean flag = true;
 
-        while(flag){
-            for(int i = 0; i < 4; i++){
+        while (flag) {
+            for (int i = 0; i < 4; i++) {
                 int fx = currentPoint.x + dx[i];
                 int fy = currentPoint.y + dy[i];
                 Point tempPoint = new Point(fx, fy);
                 // 由于边界都是1中间障碍物也是1，，这样不必考虑越界和障碍点扩展问题
                 //如果不设置边界那么fx >=map.length &&fy>=map[0].length判断越界问题
-                if(map[fx][fy] == 1){
+                if (map[fx][fy] == 1) {
                     continue;
                 } else {
-                    if(end.equals(tempPoint)){
+                    if (end.equals(tempPoint)) {
                         flag = false;
                         end.parent = currentPoint;
                         break;
@@ -78,18 +78,18 @@ public class AStar {
 
                     tempPoint.H = Point.getDis(tempPoint, end);
                     tempPoint.F = tempPoint.G + tempPoint.H;
-                    if(openTab.contains(tempPoint)){
+                    if (openTab.contains(tempPoint)) {
                         int pos = openTab.indexOf(tempPoint);
                         Point temp = openTab.get(pos);
-                        if(temp.F > tempPoint.F){
+                        if (temp.F > tempPoint.F) {
                             openTab.remove(pos);
                             openTab.add(tempPoint);
                             tempPoint.parent = currentPoint;
                         }
-                    } else if(closeTab.contains(tempPoint)){
+                    } else if (closeTab.contains(tempPoint)) {
                         int pos = closeTab.indexOf(tempPoint);
                         Point temp = closeTab.get(pos);
-                        if(temp.F > tempPoint.F){
+                        if (temp.F > tempPoint.F) {
                             closeTab.remove(pos);
                             openTab.add(tempPoint);
                             tempPoint.parent = currentPoint;
@@ -103,10 +103,10 @@ public class AStar {
 
             }
 
-            if(openTab.isEmpty()){
+            if (openTab.isEmpty()) {
                 return null;
             }
-            if(!flag){
+            if (!flag) {
                 break;
             }
             openTab.remove(currentPoint);
@@ -116,7 +116,7 @@ public class AStar {
         }
 
         Point node = end;
-        while(node.parent != null){
+        while (node.parent != null) {
             pathStack.push(node);
             node = node.parent;
         }
@@ -161,8 +161,8 @@ class Point implements Comparable<Point> {
         return dis;
     }
 
-    public String toString(){
-        return "["+this.x+","+this.y+"]";
+    public String toString() {
+        return "[" + this.x + "," + this.y + "]";
     }
 }
 

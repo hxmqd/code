@@ -18,7 +18,7 @@ public class ChannelTest {
             FileChannel inChannel = aFile.getChannel();
             ByteBuffer buf = ByteBuffer.allocate(50);
             int bytesRead = inChannel.read(buf);
-            System.out.print("bytesRead:"+bytesRead);
+            System.out.print("bytesRead:" + bytesRead);
             while (bytesRead != -1) {
                 System.out.print("Read" + bytesRead);
                 buf.flip();

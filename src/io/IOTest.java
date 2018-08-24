@@ -7,7 +7,7 @@ import java.io.InputStream;
 
 public class IOTest {
 
-    public  static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws FileNotFoundException {
         InputStream input = new FileInputStream("test.txt");
     }
 }
